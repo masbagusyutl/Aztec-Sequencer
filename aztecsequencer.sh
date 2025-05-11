@@ -18,7 +18,7 @@ display_welcome() {
     echo "|\\ |  \\_/  |__| |__/ |    |__| | |__/ |  \\ |__/ |  | |__]"
     echo "| \\|   |   |  | |  \\ |    |  | | |  \\ |__/ |  \\ |__| |    "
     echo -e "${GREEN}"
-    echo "Instalasi Otomatis Node Aztec Sequencer "
+    echo "Instalasi Otomatis Node Aztec Sequencer"
     echo -e "${YELLOW}"
     echo "Telegram: https://t.me/nyariairdrop"
     echo -e "${NC}"
@@ -153,7 +153,9 @@ get_configuration() {
     # Dapatkan kunci privat validator
     read -p "Masukkan kunci privat validator Anda (tanpa awalan '0x'): " VALIDATOR_PRIVATE_KEY_INPUT
     VALIDATOR_PRIVATE_KEY="0x${VALIDATOR_PRIVATE_KEY_INPUT#0x}"
-    while [ -z "$VALIDATOR_PRIVATE_KEY" ] || [ "${#VALIDATOR_PRIVATE_KEY}" -ne 66 ]; then
+    
+    while [ -z "$VALIDATOR_PRIVATE_KEY" ] || [ "${#VALIDATOR_PRIVATE_KEY}" -ne 66 ]
+    do
         echo -e "${RED}Kunci privat tidak valid. Harus berupa string hex 64 karakter (dengan awalan 0x).${NC}"
         read -p "Masukkan kunci privat validator Anda (tanpa awalan '0x'): " VALIDATOR_PRIVATE_KEY_INPUT
         VALIDATOR_PRIVATE_KEY="0x${VALIDATOR_PRIVATE_KEY_INPUT#0x}"
@@ -162,7 +164,7 @@ get_configuration() {
     # Dapatkan alamat coinbase
     read -p "Masukkan alamat evm Anda (penerima hadiah blok): " COINBASE_INPUT
     COINBASE="0x${COINBASE_INPUT#0x}"
-    while [ -z "$COINBASE" ] || [ "${#COINBASE}" -ne 42 ]; then
+    while [ -z "$COINBASE" ] || [ "${#COINBASE}" -ne 42 ]; do
         echo -e "${RED}Alamat Ethereum tidak valid. Harus berupa string hex 40 karakter (dengan awalan 0x).${NC}"
         read -p "Masukkan alamat coinbase Anda: " COINBASE_INPUT
         COINBASE="0x${COINBASE_INPUT#0x}"
